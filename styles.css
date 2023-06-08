@@ -3,14 +3,17 @@
     flex-wrap: wrap;
     width: 360px;
     height: auto;
+    border: 1px solid black;
 }
 
 .square {
     width: 20px;
     height: 20px;
-    border: 1px solid black;
 }
 
-.square:hover{
+.ink{
     background-color: black;
 }
+
+
+
