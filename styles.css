@@ -1,0 +1,16 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 360px;
+    height: auto;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.square:hover{
+    background-color: black;
+}
