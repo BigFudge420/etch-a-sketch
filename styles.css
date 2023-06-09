@@ -11,9 +11,6 @@
     border: 1px solid black;
 }
 
-.square {
-    box-sizing: border-box;
-}
 
 .btn{
     display: flex;
