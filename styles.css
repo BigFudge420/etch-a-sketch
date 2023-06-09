@@ -15,9 +15,13 @@
     box-sizing: border-box;
 }
 
+.btn{
+    display: flex;
+    justify-content: center;
+}
+
 .newRes{
     margin-top: 10px;
-    margin-left: auto;
 }
 
 .ink{

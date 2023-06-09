@@ -3,29 +3,25 @@ const square = document.createElement('div');
 
 let gridSize = 16
 
-for (i = 0; i < gridSize * gridSize; i++){ 
-    const square = document.createElement('div');
-    square.classList.add('square');
-    gridContainer.appendChild(square);
-}
+createGrid()
 
-let  parsedGridSize = parseInt(gridSize)
-
-const newRes = document.querySelector('.newRes')
+const newRes = document.querySelector('.newRes');
 newRes.addEventListener('click', () => {
-    gridSize = prompt('What would you like to be the amount of pixels on each side of the canvas?')
-    parsedGridSize = parseInt(gridSize)
-    if (isNaN(parsedGridSize) || parsedGridSize <= 0 || parsedGridSize > 100){
-        alert('Please enter a number between 1 and 100')
-    }
-    gridContainer.innerHTML = "";
+  const newGridSize = prompt('What would you like to be the amount of pixels on each side of the canvas?');
+  const parsedNewGridSize = parseInt(newGridSize);
+  
+  if (isNaN(parsedNewGridSize) || parsedNewGridSize <= 0 || parsedNewGridSize > 100) {
+    alert('Please enter a number between 1 and 100');
+  } else {
+    gridSize = parsedNewGridSize;
+    gridContainer.innerHTML = '';
+    createGrid();
+  }
+});
 
-    createNewGrid()
-})
-
-function createNewGrid(){
-    const squareSize = 480/parsedGridSize
-    for (i = 0; i <  parsedGridSize * parsedGridSize; i++){ 
+function createGrid(){
+    const squareSize = 480/gridSize
+    for (i = 0; i <  gridSize * gridSize; i++){ 
         const square = document.createElement('div');
         square.classList.add('square');
         square.style.width = `${squareSize}px`
