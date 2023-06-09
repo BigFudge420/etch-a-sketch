@@ -30,6 +30,8 @@ function createGrid(){
     }
 }
 
+let squareColor = 'black'
+
 let isDrawing = false;
 
 gridContainer.addEventListener('mousedown', () => {
@@ -44,9 +46,18 @@ gridContainer.addEventListener('mouseleave', () => {
     isDrawing = false;
 })
 
+function newSquareColor(){
+    squareColor = prompt('What new color would you like to use?')
+}
+
+let newColor = document.querySelector('.newColor')
+newColor.addEventListener('click', () => {
+    newSquareColor()
+})
+
 gridContainer.addEventListener('mouseover', (e) => {
     if (isDrawing && e.target.classList.contains('square')){
-        e.target.style.backgroundColor = 'black';
+        e.target.style.backgroundColor = `${squareColor}`;
     }
 })
 

@@ -22,11 +22,11 @@
 
 .newRes{
     margin-top: 10px;
+    margin-left: 5px;
 }
 
-.ink{
-    background-color: black;
+.newColor{
+    margin-top: 10px;
+    padding: 2px;
+    margin-right: 5px;
 }
-
-
-
