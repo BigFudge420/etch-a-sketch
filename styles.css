@@ -1,14 +1,23 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 360px;
+    width: 480px;
     height: auto;
     border: 1px solid black;
 }
 
 .square {
-    width: 20px;
-    height: 20px;
+    box-sizing: border-box;
+}
+
+.newRes{
+    margin-top: 10px;
+    margin-left: auto;
 }
 
 .ink{
