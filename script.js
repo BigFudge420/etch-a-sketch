@@ -1,19 +1,20 @@
+let squareColor;
 const gridContainer = document.querySelector('.grid')
 const square = document.createElement('div');
 
-let gridSize = 16
+let gridSize = 16;
 
 createGrid()
 
-const newRes = document.querySelector('.newRes');
-newRes.addEventListener('click', () => {
-  const newGridSize = prompt('What would you like to be the amount of pixels on each side of the canvas?');
-  const parsedNewGridSize = parseInt(newGridSize);
-  
-  if (isNaN(parsedNewGridSize) || parsedNewGridSize <= 0 || parsedNewGridSize > 100) {
+const newRes = document.querySelector('#newRes');
+const newResBtn = document.querySelector('#newResBtn')
+newResBtn.addEventListener('click', () => {
+  const newGridSize = newRes.value
+
+  if (isNaN(newGridSize) || newGridSize <= 0 || newGridSize > 100) {
     alert('Please enter a number between 1 and 100');
   } else {
-    gridSize = parsedNewGridSize;
+    gridSize = newGridSize;
     gridContainer.innerHTML = '';
     createGrid();
   }
@@ -30,7 +31,12 @@ function createGrid(){
     }
 }
 
-let squareColor = 'black'
+function clearGridColor(){
+    let squares = document.querySelectorAll('.square')
+    squares.forEach((square) => { 
+        square.style.backgroundColor = 'white'
+    })
+}
 
 let isDrawing = false;
 
@@ -46,18 +52,58 @@ gridContainer.addEventListener('mouseleave', () => {
     isDrawing = false;
 })
 
+let colorInput = document.querySelector('#color')
+colorInput.addEventListener('input', () => {
+    isDrawing = false;
+})
+
 function newSquareColor(){
-    squareColor = prompt('What new color would you like to use?')
+    let colorInput = document.querySelector('#color')
+    squareColor =  colorInput.value
+    console.log(squareColor) 
 }
 
-let newColor = document.querySelector('.newColor')
-newColor.addEventListener('click', () => {
+function fillGridColor(){
+    let gridColorInput = document.querySelector('#fill')
+    let fillColor = gridColorInput.value
+    let squares = document.querySelectorAll('.square')
+    squares.forEach((square) => {
+        square.style.backgroundColor = `${fillColor}`
+    })
+
+}
+
+function eraseSquareColor(){
+    squareColor = 'white'
+}
+
+const colorInputBtn = document.querySelector('#colorBtn')
+colorInputBtn.addEventListener('click', () => {
+    colorInputBtn.textContent = 'Change Color'
     newSquareColor()
 })
 
+squareColor = 'black'
 gridContainer.addEventListener('mouseover', (e) => {
     if (isDrawing && e.target.classList.contains('square')){
         e.target.style.backgroundColor = `${squareColor}`;
     }
+    console.log()
 })
 
+
+const clearBtn = document.getElementById('clear')
+clearBtn.addEventListener('click', () =>{
+    clearGridColor()
+})
+
+const eraserBtn = document.getElementById('eraser')
+eraserBtn.addEventListener('click', () =>{
+    colorInputBtn.textContent = 'Change to brush'
+    eraseSquareColor()
+})
+
+const fillBtn = document.getElementById('fillBtn')
+fillBtn.addEventListener('click' ,() => {
+    fillGridColor()
+})

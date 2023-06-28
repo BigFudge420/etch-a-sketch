@@ -1,6 +1,30 @@
+body{
+    margin: 0px;
+    overflow-y: hidden;
+    font-family: 'Ubuntu' ,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .container{
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+h1{
+    position: relative;
+    top: 80px;
+    margin: 0px;
+    font-size: 3rem;
+    text-shadow: gray 3px 3px 2px;
 }
 
 .grid {
@@ -8,22 +32,98 @@
     flex-wrap: wrap;
     width: 480px;
     height: auto;
-    border: 1px solid black;
+    border: 3px solid black;
+    margin: 100px;
+    box-shadow: gray 4px 4px 2px;
 }
 
 
 .btn{
+    background-color: black;
+    color: white;
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    position: relative;
+    right: 200px;
+    width: 200px;
+    height: 100%;
+    border-right: black solid 2px;
+    padding: 20px;
+    box-shadow: gray 5px 0px 5px;
 }
 
-.newRes{
-    margin-top: 10px;
-    margin-left: 5px;
+button{
+    appearance: none;
+    border: none;
+    padding: 8px;
+    border-radius: 12px;
+    color: black;
+    background-color: white;
+    font-weight:900;
+    width: 150px;
+    height: 35px;
+    font-size: 1rem;
 }
 
-.newColor{
-    margin-top: 10px;
-    padding: 2px;
-    margin-right: 5px;
+.inputs{
+    margin: 12px auto;
+    font-family: 'Ubuntu','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
 }
+
+input{
+    margin: 5px;
+}
+
+
+
+input[type='color']{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border: none;
+}
+
+input,
+button{
+    margin: 5px;
+}
+
+
+input:hover,
+button:hover{
+    box-shadow: white 0px 2px 4px;
+}
+
+button:active{
+    background-color: black;
+    color: white;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper{
+    padding: 0px;
+}
+
+input[type='color']::-webkit-color-swatch {
+    border-radius: 50%;
+}
+
+
+#newRes{
+    height: 40px;
+    width: 140px;
+    border-radius: 10px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
