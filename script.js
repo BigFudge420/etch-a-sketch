@@ -1,7 +1,7 @@
 let squareColor;
 const gridContainer = document.querySelector('.grid')
 const square = document.createElement('div');
-
+let num = 0;
 let gridSize = 16;
 
 createGrid()
@@ -22,7 +22,7 @@ newResBtn.addEventListener('click', () => {
 
 function createGrid(){
     const squareSize = 480/gridSize
-    for (i = 0; i <  gridSize * gridSize; i++){ 
+    for (let i = 0; i <  gridSize * gridSize; i++){ 
         const square = document.createElement('div');
         square.classList.add('square');
         square.style.width = `${squareSize}px`
@@ -57,6 +57,7 @@ colorInput.addEventListener('input', () => {
     isDrawing = false;
 })
 
+
 function newSquareColor(){
     let colorInput = document.querySelector('#color')
     squareColor =  colorInput.value
@@ -77,9 +78,32 @@ function eraseSquareColor(){
     squareColor = 'white'
 }
 
+function randomColor(){
+    const allSquares = document.querySelectorAll('.square')
+    allSquares.forEach((eachSquare) => {
+        eachSquare.addEventListener('mouseenter', () => {
+            console.log('sundkjsn')
+            R = Math.floor(Math.random()*256)
+            G = Math.floor(Math.random()*256)
+            B = Math.floor(Math.random()*256)
+            randomSquareColor = `rgb(${R},${G},${B})`
+        })
+    })
+    return
+}
+
+function stopRandomColor() {
+    const allSquares = document.querySelectorAll('.square');
+    allSquares.forEach((eachSquare) => {
+      eachSquare.removeEventListener('mouseenter', () => {});
+    });
+  }
+  
 const colorInputBtn = document.querySelector('#colorBtn')
 colorInputBtn.addEventListener('click', () => {
+    num = 0;
     colorInputBtn.textContent = 'Change Color'
+    stopRandomColor()
     newSquareColor()
 })
 
@@ -91,6 +115,11 @@ gridContainer.addEventListener('mouseover', (e) => {
     console.log()
 })
 
+gridContainer.addEventListener('mouseover', (e) => {
+    if (num > 0 && (isDrawing && e.target.classList.contains('square'))){
+        e.target.style.backgroundColor = randomSquareColor
+    }
+})
 
 const clearBtn = document.getElementById('clear')
 clearBtn.addEventListener('click', () =>{
@@ -106,4 +135,12 @@ eraserBtn.addEventListener('click', () =>{
 const fillBtn = document.getElementById('fillBtn')
 fillBtn.addEventListener('click' ,() => {
     fillGridColor()
+})
+
+const rainbowBtn = document.querySelector('#rainbowBtn')
+rainbowBtn.addEventListener('click', ()=>{
+    num++
+    if (num > 0){
+        randomColor()
+    }
 })
