@@ -65,8 +65,8 @@ function newSquareColor(){
 }
 
 function fillGridColor(){
-    let gridColorInput = document.querySelector('#fill')
-    let fillColor = gridColorInput.value
+    let colorInput = document.querySelector('#color')
+    let fillColor = colorInput.value
     let squares = document.querySelectorAll('.square')
     squares.forEach((square) => {
         square.style.backgroundColor = `${fillColor}`
@@ -78,7 +78,8 @@ function eraseSquareColor(){
     squareColor = 'white'
 }
 
-function randomColor(){
+let rainbowSquareColor;
+function rainbowMode(){
     const allSquares = document.querySelectorAll('.square')
     allSquares.forEach((eachSquare) => {
         eachSquare.addEventListener('mouseenter', () => {
@@ -86,7 +87,7 @@ function randomColor(){
             R = Math.floor(Math.random()*256)
             G = Math.floor(Math.random()*256)
             B = Math.floor(Math.random()*256)
-            randomSquareColor = `rgb(${R},${G},${B})`
+            rainbowSquareColor = `rgb(${R},${G},${B})`
         })
     })
     return
@@ -98,11 +99,19 @@ function stopRandomColor() {
       eachSquare.removeEventListener('mouseenter', () => {});
     });
   }
+
+
+function randomColor(){
+    let R = Math.floor(Math.random()*256) 
+    let G = Math.floor(Math.random()*256) 
+    let B = Math.floor(Math.random()*256)
+    squareColor = `rgb(${R},${G},${B})` 
+}
   
 const colorInputBtn = document.querySelector('#colorBtn')
 colorInputBtn.addEventListener('click', () => {
     num = 0;
-    colorInputBtn.textContent = 'Change Color'
+    colorInputBtn.textContent = 'Edit Brush Color'
     stopRandomColor()
     newSquareColor()
 })
@@ -117,7 +126,7 @@ gridContainer.addEventListener('mouseover', (e) => {
 
 gridContainer.addEventListener('mouseover', (e) => {
     if (num > 0 && (isDrawing && e.target.classList.contains('square'))){
-        e.target.style.backgroundColor = randomSquareColor
+        e.target.style.backgroundColor = rainbowSquareColor
     }
 })
 
@@ -141,6 +150,11 @@ const rainbowBtn = document.querySelector('#rainbowBtn')
 rainbowBtn.addEventListener('click', ()=>{
     num++
     if (num > 0){
-        randomColor()
+        rainbowMode()
     }
+})
+
+const randomBtn = document.querySelector('#random')
+randomBtn.addEventListener('click', () => {
+    randomColor()
 })

@@ -71,15 +71,18 @@ button{
 }
 
 .inputs{
-    margin: 12px auto;
+    margin: 12px ;
     font-family: 'Ubuntu','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
+    position: relative;
+    right: -5px;
+    padding: 5px;
     flex-direction: column;
-    padding: 10px;
     justify-content: center;
     align-items: center;
     border: 1px solid white;
     border-radius: 10px;
+    width: 180px;
 }
 
 input{
