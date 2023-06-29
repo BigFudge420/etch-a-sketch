@@ -75,6 +75,7 @@ function fillGridColor(){
 }
 
 function eraseSquareColor(){
+    num = 0;
     squareColor = 'white'
 }
 
